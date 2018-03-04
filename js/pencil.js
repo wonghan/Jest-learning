@@ -6,4 +6,8 @@
  * @return {undefined|String}
  */
 function query (name, url) {
+  // ?hello=test&wonghan=handsome
+  var reg = new RegExp('(?:\\?|&)' + name + '=(.*?)(?:&|$)')
+  var ret = reg.exec(url) || []
+  return ret[1]
 }
