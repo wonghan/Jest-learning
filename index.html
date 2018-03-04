@@ -8,19 +8,6 @@
 </head>
 <body>
     <script src="js/pencil.js"></script>
-    <script>
-      function assert(expression, message){
-          console.log(expression,message)
-      }
-      //断言
-      assert(query('hello', '?hello=test') === 'test','test hello = test')
-      assert(query('hello', '?hello=') === '','test hello = ""')
-      assert(query('hello', '?hello2=test') === undefined,'undefined')
-      assert(query('hello', '?hello=test&hello2=3') === 'test','test hello = test')
-      assert(query('hello', '?hello=&hello2=3')==='','test hello = ""')
-      assert(query('hello', '?')===undefined,'undefined')
-      assert(query('hello-test', '?hello-test=test')==='test','test hello-test=test')
-      assert(query('hello/test', '?hello/test=test')==='test','test hello/test=test')
-    </script>
+    <script src="js/pencil.test.js"></script>
 </body>
 </html>
