@@ -1,7 +1,3 @@
-function assert(expression, message){
-    console.log(expression,message)
-    return expression
-}
 // 用例 test-case
 // assert(query('hello', '?hello=test') === 'test','test hello = test')
 // assert(query('hello', '?hello=') === '','test hello = ""')
@@ -12,29 +8,24 @@ function assert(expression, message){
 // assert(query('hello-test', '?hello-test=test')==='test','test hello-test=test')
 // assert(query('hello/test', '?hello/test=test')==='test','test hello/test=test')
 
-function testCase(message,tests) {
-    var total = 0
-    var success = 0
+// test case | assert
 
-     for(var test in tests){
-         total += 1
-         var ret = tests[test](test)
-         if(ret){
-             success += 1
-         }
-     }
-     console.log('success/total' + success +'/'+total)
-}
+const Pencil = require('./pencil')
 
-/**
- * 测试用例
- * @param {String} 'Query' 框架名称
- */
-testCase('Query',{
-    'test hello = test':(message) =>{
-        return assert(query('hello', '?hello=test') === 'test',message)
-    },
-    'test hello = ""':(message) =>{
-        return assert(query('hello', '?hello=') === '',message)
-    }
+test('query',()=>{  // testCase
+    // assert
+    expect(Pencil.query('hello', '?hello=test')).toBe('test')
+    expect(Pencil.query('hello', '?hello2=test')).toBe(undefined)
+})
+
+test('query2',()=>{
+    expect(Pencil.query('hello/test', '?hello/test=test')).toBe('test')
+})
+
+describe('test query',()=>{
+    test('query3',()=>{  // testCase
+        // assert
+        expect(Pencil.query('hello', '?hello=test')).toBe('test')
+        expect(Pencil.query('hello', '?hello2=test')).toBe(undefined)
+    })
 })
